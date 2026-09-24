@@ -1,0 +1,11 @@
+parameter,value
+Total Budget,33000
+Staff Wage per 12-hour shift,312
+Staff-to-client ratio,20
+Operations Cost per Person,107
+Transfer Cost,147
+Probability Moderate,0.88
+Probability Extreme,0.12
+Utility per Admission,500
+Transfer Disutility,50
+Turn-away Penalty,2000
