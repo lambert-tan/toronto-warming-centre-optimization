@@ -1,0 +1,4 @@
+scenario,total_demand,total_admitted,turn_aways,transfer_in,transfer_out,operations_cost,objective
+Moderate,231,231,0,0,0,24717,115500
+Extreme,306,297,9,4,4,32795,130300
+Weighted Final Objective,,,,,,,117276
