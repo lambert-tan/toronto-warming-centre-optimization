@@ -1,0 +1,8 @@
+centre,capacity,arrival_rate,extreme_only
+Elizabeth,75,6.08,False
+George,30,2.5,False
+Scarborough,68,5.52,False
+North York,46,3.63,False
+Spadina,22,1.76,False
+Cecil,30,2.21,True
+Jimmie Simpson,30,2.2,True
