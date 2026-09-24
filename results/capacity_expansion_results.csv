@@ -1,0 +1,4 @@
+strategy,additional_beds,allocation,reported_result
+Equal,10,"Distributed equally across centres","Comparison baseline"
+Proportional,10,"Allocated in proportion to demand","Comparison baseline"
+Targeted,10,"5 Elizabeth; 5 Scarborough","Original project reports +5.7% welfare and -67% turn-aways versus the comparison setting"
