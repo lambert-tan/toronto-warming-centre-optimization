@@ -47,6 +47,34 @@ The workflow is organized around four analytical steps:
 3. **Stress testing:** Evaluate the operating plan over 5,000 simulated nights rather than relying only on expected demand.
 4. **Capacity analysis:** Examine whether adding beds provides greater value once staffing is sufficient to support existing physical capacity.
 
+## Stress Testing and Capacity Expansion
+
+A deterministic optimization solution is useful for planning, but expected demand does not capture the full range of nights the system may face. The original project therefore extended the analysis with a **5,000-iteration Monte Carlo stress test**.
+
+The stress test highlighted a second constraint: once the optimized staffing plan can support the existing beds, additional staff do not create additional physical places for clients. Under high-demand conditions, the system can still reach its bed-capacity ceiling.
+
+The analysis then tested a **10-bed expansion** under three allocation rules: equal allocation, proportional allocation, and targeted allocation. In the original project results, the targeted strategy placed **5 additional beds at Elizabeth and 5 at Scarborough**. This configuration was reported to improve welfare by **5.7%** and reduce turn-aways by **67%** in the expansion comparison.
+
+These results should be interpreted within the assumptions of the simulation rather than as forecasts of actual shelter outcomes. In particular, the relative performance of an expansion strategy depends on the assumed demand distribution, transfer mechanism, and cost structure.
+
+### Decision path
+
+```text
+Expected demand
+      ↓
+Staffing optimization
+      ↓
+5,000-night stress test
+      ↓
+Physical capacity identified as a binding constraint
+      ↓
+10-bed expansion analysis
+      ↓
+Compare equal / proportional / targeted allocation
+```
+
+The portfolio repository keeps the Excel-derived optimization results separate from the simulation and expansion outputs so that the source of each result remains clear.
+
 ## Model Assumptions
 
 | Parameter | Value |
