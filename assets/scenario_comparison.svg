@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430">
+<rect width="920" height="430" fill="white"/>
+<text x="40" y="45" font-family="Arial" font-size="26" font-weight="700" fill="#111827">Scenario Comparison</text>
+<text x="40" y="73" font-family="Arial" font-size="15" fill="#6B7280">The optimized plan handles moderate demand, but extreme demand exceeds available capacity.</text>
+<line x1="100" y1="340" x2="850" y2="340" stroke="#D1D5DB"/>
+<g font-family="Arial" font-size="14" fill="#374151"><text x="210" y="370">Moderate</text><text x="610" y="370">Extreme</text></g>
+<rect x="155" y="109" width="75" height="231" fill="#D1D5DB"/><rect x="240" y="109" width="75" height="231" fill="#111827"/>
+<rect x="555" y="34" width="75" height="306" fill="#D1D5DB"/><rect x="640" y="43" width="75" height="297" fill="#111827"/>
+<rect x="725" y="331" width="75" height="9" fill="#6B7280"/>
+<g font-family="Arial" font-size="14" fill="#111827"><text x="178" y="100">231</text><text x="263" y="100">231</text><text x="578" y="25">306</text><text x="663" y="34">297</text><text x="750" y="324">9</text></g>
+<rect x="140" y="395" width="18" height="12" fill="#D1D5DB"/><text x="168" y="406" font-family="Arial" font-size="13" fill="#374151">Demand</text>
+<rect x="270" y="395" width="18" height="12" fill="#111827"/><text x="298" y="406" font-family="Arial" font-size="13" fill="#374151">Admitted</text>
+<rect x="405" y="395" width="18" height="12" fill="#6B7280"/><text x="433" y="406" font-family="Arial" font-size="13" fill="#374151">Turn-aways</text>
+<text x="540" y="406" font-family="Arial" font-size="13" fill="#374151">Extreme cost: $32,795 / $33,000 budget</text>
+</svg>
