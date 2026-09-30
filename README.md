@@ -1,20 +1,44 @@
 # Toronto Warming Centre Capacity and Staffing Optimization
 
-**Python | Monte Carlo Simulation | Integer Optimization | Decision Analytics**
+> **How should limited staffing and bed capacity be allocated across Toronto warming centres when winter demand is uncertain?**
 
-Toronto warming centres operate under a practical resource-allocation problem: demand rises during severe cold, but beds, staff, and operating funds are limited. This project examines how staffing and physical capacity can be allocated across seven warming centres while keeping nightly operations within a **$33,000 budget**.
+**Python · Monte Carlo Simulation · Integer Optimization · Decision Analytics**
 
-> **Business question:** How should limited staffing and bed capacity be allocated across Toronto warming centres to reduce turn-aways under uncertain winter demand?
+This project models a nightly resource-allocation problem across seven Toronto warming centres. The goal is to reduce unmet demand while staying within a **$33,000 operating budget** and respecting staffing and physical-capacity constraints.
 
-## Project Overview
+## Results at a glance
 
-The analysis follows three stages. First, centre-level demand is represented with Poisson arrivals under moderate and extreme-weather conditions. Second, an optimization model allocates staff subject to physical capacity, staffing, and budget constraints. Third, the operating plan is stress-tested through Monte Carlo simulation to examine how it performs when realized demand differs from expected demand.
+**7 centres · 19 staff · 301 physical beds · 5,000-night stress test**
 
-The portfolio version extends the original analysis by separating the modelling workflow into reproducible Python components and GitHub-readable result files.
+- The optimized staffing plan supports up to **380 clients**, but the network contains only **301 physical beds**.
+- Under the moderate planning scenario, **231 of 231** clients are admitted.
+- Under the extreme scenario, demand rises to **306** and **297** clients are admitted, leaving **9 turn-aways**.
+- Extreme-scenario operating cost is **$32,795**, just below the **$33,000** nightly budget.
+- Once staffing is sufficient, the binding operational constraint shifts toward **physical bed capacity**.
 
-## Key Results
+<p align="center"><img src="assets/scenario_comparison.svg" width="850" alt="Moderate and extreme demand scenarios"></p>
 
-The optimization allocates **19 staff across seven warming centres**. At a 1:20 staff-to-client ratio, this staffing level can theoretically support 380 clients, compared with only **301 physical beds** across the network.
+## Business decision
+
+The main insight is not simply how many staff to schedule. The model shows that adding labour eventually stops creating additional usable capacity because beds become the tighter constraint.
+
+That changes the operational question from:
+
+**“How many more staff do we need?”**
+
+to:
+
+**“Where would additional physical capacity reduce unmet demand most effectively?”**
+
+The original expansion analysis therefore compared different ways to allocate **10 additional beds**. The targeted configuration placed **5 beds at Elizabeth and 5 at Scarborough** and was reported to improve welfare by **5.7%** while reducing turn-aways by **67%** relative to the comparison setting used in the original analysis.
+
+These figures are scenario-based model results rather than forecasts of real shelter outcomes.
+
+<p align="center"><img src="assets/decision_workflow.svg" width="850" alt="Decision workflow from demand to targeted capacity"></p>
+
+## Capacity bottleneck
+
+The optimization allocates **19 staff** across the seven centres. At a **1:20 staff-to-client ratio**, that staffing level can theoretically support 380 clients, while the network contains 301 physical beds.
 
 | Centre | Staff | Physical Capacity | Staff-Supported Capacity |
 |---|---:|---:|---:|
@@ -27,55 +51,35 @@ The optimization allocates **19 staff across seven warming centres**. At a 1:20 
 | Jimmie Simpson | 2 | 30 | 40 |
 | **Total** | **19** | **301** | **380** |
 
-The Excel optimization results show a clear difference between the two planning scenarios:
+<p align="center"><img src="assets/capacity_by_centre.svg" width="850" alt="Physical versus staff-supported capacity by centre"></p>
+
+This comparison is important because it shows why additional staffing alone cannot solve high-demand nights once physical capacity is exhausted.
+
+## Scenario results
 
 | Scenario | Demand | Admitted | Turn-aways | Operating Cost |
 |---|---:|---:|---:|---:|
 | Moderate | 231 | 231 | 0 | $24,717 |
 | Extreme | 306 | 297 | 9 | $32,795 |
 
-Under the moderate scenario, expected demand can be accommodated without turn-aways. Under the extreme scenario, demand rises to 306 while the system admits 297 clients, leaving 9 turn-aways. The extreme-weather operating cost remains just below the $33,000 nightly budget.
+The moderate scenario can be served without turn-aways. In the extreme scenario, demand exceeds what the network can accommodate even though the operating plan remains within budget.
 
-The staffing calculation also points to an important operational constraint. With 19 staff, staffing-supported capacity exceeds the number of available beds. Under the assumptions used here, this shifts the resource question from simply adding labour toward determining whether additional physical capacity would reduce unmet demand.
+## Analytical workflow
 
-## Methodology
+The project combines deterministic optimization with stochastic stress testing:
 
-The workflow is organized around four analytical steps:
+1. **Demand modelling** — represent centre-level demand using Poisson arrivals under moderate and extreme weather conditions.
+2. **Staffing optimization** — allocate staff subject to physical capacity, staffing ratios, operating costs, and the nightly budget.
+3. **Monte Carlo stress test** — evaluate the operating plan over **5,000 simulated nights** rather than relying only on expected demand.
+4. **Capacity expansion analysis** — test whether additional beds create more value once staffing is no longer the main constraint.
 
-1. **Demand modelling:** Convert centre-level occupancy assumptions into hourly arrival rates and simulate demand using a Poisson process.
-2. **Staffing optimization:** Allocate staff while accounting for the 1:20 staff-to-client ratio, physical capacity, operating costs, and the $33,000 nightly budget.
-3. **Stress testing:** Evaluate the operating plan over 5,000 simulated nights rather than relying only on expected demand.
-4. **Capacity analysis:** Examine whether adding beds provides greater value once staffing is sufficient to support existing physical capacity.
+## Why simulation matters
 
-## Stress Testing and Capacity Expansion
+A single optimized scenario can look feasible while still performing poorly when realized demand varies.
 
-A deterministic optimization solution is useful for planning, but expected demand does not capture the full range of nights the system may face. The original project therefore extended the analysis with a **5,000-iteration Monte Carlo stress test**.
+The 5,000-night Monte Carlo stage stress-tests the staffing plan under stochastic demand and shows that high-demand nights can still push the system to the physical bed ceiling. This turns the project from a one-time allocation exercise into a more realistic **decision-under-uncertainty** problem.
 
-The stress test highlighted a second constraint: once the optimized staffing plan can support the existing beds, additional staff do not create additional physical places for clients. Under high-demand conditions, the system can still reach its bed-capacity ceiling.
-
-The analysis then tested a **10-bed expansion** under three allocation rules: equal allocation, proportional allocation, and targeted allocation. In the original project results, the targeted strategy placed **5 additional beds at Elizabeth and 5 at Scarborough**. This configuration was reported to improve welfare by **5.7%** and reduce turn-aways by **67%** in the expansion comparison.
-
-These results should be interpreted within the assumptions of the simulation rather than as forecasts of actual shelter outcomes. In particular, the relative performance of an expansion strategy depends on the assumed demand distribution, transfer mechanism, and cost structure.
-
-### Decision path
-
-```text
-Expected demand
-      ↓
-Staffing optimization
-      ↓
-5,000-night stress test
-      ↓
-Physical capacity identified as a binding constraint
-      ↓
-10-bed expansion analysis
-      ↓
-Compare equal / proportional / targeted allocation
-```
-
-The portfolio repository keeps the Excel-derived optimization results separate from the simulation and expansion outputs so that the source of each result remains clear.
-
-## Model Assumptions
+## Model assumptions
 
 | Parameter | Value |
 |---|---:|
@@ -90,35 +94,46 @@ The portfolio repository keeps the Excel-derived optimization results separate f
 | Transfer disutility | $50 |
 | Turn-away penalty | $2,000 |
 
-These assumptions are modelling inputs rather than forecasts. They are retained to make the optimization logic transparent and reproducible.
+These are modelling inputs rather than forecasts. Changing them can change the preferred allocation.
 
-## Repository Structure
+## Repository structure
 
 ```text
 toronto-warming-centre-optimization/
-├── README.md
-├── requirements.txt
+├── assets/
+│   ├── capacity_by_centre.svg
+│   ├── decision_workflow.svg
+│   └── scenario_comparison.svg
 ├── data/
 │   └── processed/
 │       └── centre_parameters.csv
 ├── notebooks/
 │   └── warming_centre_end_to_end.ipynb
 ├── results/
-│   ├── staffing_results.csv
+│   ├── capacity_expansion_results.csv
+│   ├── model_assumptions.csv
 │   ├── scenario_results.csv
-│   └── model_assumptions.csv
-└── src/
-    └── simulation.py
+│   ├── staffing_results.csv
+│   └── stage3_stress_test_summary.csv
+├── src/
+│   └── simulation.py
+├── requirements.txt
+└── README.md
 ```
 
-The `results/` folder contains GitHub-readable extracts of the original Excel optimization outputs so that the main model results can be reviewed without opening the workbook.
+The `results/` folder keeps the key outputs GitHub-readable so the main findings can be inspected without opening the original Excel model.
 
 ## Limitations
 
-Occupancy is an imperfect proxy for unconstrained demand when a centre is already full. The Poisson arrival process, two-state weather model, and transfer assumptions simplify actual shelter demand and operations. The results should therefore be interpreted as scenario-based decision support rather than operational forecasts.
+This is a scenario-based decision model. Occupancy is an imperfect proxy for unconstrained demand when centres are already full, and the Poisson process, two-state weather assumption, transfer logic, and cost structure simplify real operations.
 
-The optimization results also depend on the cost, utility, and penalty assumptions specified above. Different assumptions could change the preferred allocation.
+The capacity-expansion results should therefore be interpreted as model-based comparisons under the stated assumptions, not as predictions of actual shelter performance.
 
-## Portfolio Note
+## Portfolio note
 
-This repository is an independently rebuilt and extended portfolio version of an earlier academic team project. The workflow has been reorganized and documented as a standalone analysis. It is not presented as individual authorship of the original team submission.
+This repository is an independently rebuilt and extended portfolio version of an earlier academic team project. The workflow has been reorganized and documented as a standalone analysis and is not presented as individual authorship of the original team submission.
+
+---
+
+**Lambert Tan**  
+Master of Management in Analytics · Smith School of Business, Queen's University
