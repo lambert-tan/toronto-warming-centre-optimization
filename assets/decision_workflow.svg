@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="240" viewBox="0 0 920 240">
+<rect width="920" height="240" fill="white"/>
+<text x="40" y="42" font-family="Arial" font-size="25" font-weight="700" fill="#111827">Decision Workflow</text>
+<g font-family="Arial" font-size="14" text-anchor="middle">
+<rect x="35" y="95" width="150" height="70" rx="10" fill="#F3F4F6"/><text x="110" y="124" fill="#111827">Expected</text><text x="110" y="145" fill="#111827">demand</text>
+<rect x="215" y="95" width="150" height="70" rx="10" fill="#F3F4F6"/><text x="290" y="124" fill="#111827">Staffing</text><text x="290" y="145" fill="#111827">optimization</text>
+<rect x="395" y="95" width="150" height="70" rx="10" fill="#F3F4F6"/><text x="470" y="124" fill="#111827">5,000-night</text><text x="470" y="145" fill="#111827">stress test</text>
+<rect x="575" y="95" width="150" height="70" rx="10" fill="#F3F4F6"/><text x="650" y="124" fill="#111827">Identify</text><text x="650" y="145" fill="#111827">bed bottleneck</text>
+<rect x="755" y="95" width="130" height="70" rx="10" fill="#111827"/><text x="820" y="124" fill="white">Target</text><text x="820" y="145" fill="white">capacity</text>
+</g>
+<g stroke="#6B7280" stroke-width="2"><line x1="185" y1="130" x2="215" y2="130"/><line x1="365" y1="130" x2="395" y2="130"/><line x1="545" y1="130" x2="575" y2="130"/><line x1="725" y1="130" x2="755" y2="130"/></g>
+</svg>
