@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500">
+<rect width="920" height="500" fill="white"/>
+<text x="40" y="45" font-family="Arial" font-size="26" font-weight="700" fill="#111827">Physical vs Staff-Supported Capacity</text>
+<text x="40" y="73" font-family="Arial" font-size="15" fill="#6B7280">19 staff can support 380 clients, but the network has 301 physical beds.</text>
+<line x1="190" y1="105" x2="190" y2="445" stroke="#D1D5DB"/>
+<g font-family="Arial" font-size="14" fill="#374151">
+<text x="40" y="139">Elizabeth</text><text x="40" y="184">George</text><text x="40" y="229">Scarborough</text><text x="40" y="274">North York</text><text x="40" y="319">Spadina</text><text x="40" y="364">Cecil</text><text x="40" y="409">Jimmie Simpson</text>
+</g>
+<g fill="#9CA3AF"><rect x="190" y="120" width="375" height="14"/><rect x="190" y="165" width="150" height="14"/><rect x="190" y="210" width="340" height="14"/><rect x="190" y="255" width="230" height="14"/><rect x="190" y="300" width="110" height="14"/><rect x="190" y="345" width="150" height="14"/><rect x="190" y="390" width="150" height="14"/></g>
+<g fill="#111827"><rect x="190" y="137" width="400" height="14"/><rect x="190" y="182" width="200" height="14"/><rect x="190" y="227" width="400" height="14"/><rect x="190" y="272" width="300" height="14"/><rect x="190" y="317" width="200" height="14"/><rect x="190" y="362" width="200" height="14"/><rect x="190" y="407" width="200" height="14"/></g>
+<g font-family="Arial" font-size="13" fill="#6B7280"><text x="575" y="133">75</text><text x="600" y="150">80</text><text x="350" y="178">30</text><text x="400" y="195">40</text><text x="540" y="223">68</text><text x="600" y="240">80</text><text x="430" y="268">46</text><text x="500" y="285">60</text><text x="310" y="313">22</text><text x="400" y="330">40</text><text x="350" y="358">30</text><text x="400" y="375">40</text><text x="350" y="403">30</text><text x="400" y="420">40</text></g>
+<rect x="650" y="115" width="18" height="12" fill="#9CA3AF"/><text x="678" y="126" font-family="Arial" font-size="13" fill="#374151">Physical beds</text>
+<rect x="650" y="140" width="18" height="12" fill="#111827"/><text x="678" y="151" font-family="Arial" font-size="13" fill="#374151">Staff-supported capacity</text>
+</svg>
