@@ -1,6 +1,6 @@
 # ❄️ Toronto warming centres: staffing, beds and overnight referrals
 
-In our graduate team’s extreme-weather planning scenario, **nine people were turned away while four beds remained unused**. Even a perfect transfer system could fill only four of those nine places. I wanted to know how much unmet demand planners might see across a winter, and how much the answer depends on which centres can take referrals.
+In our graduate team’s extreme-weather planning scenario, **nine people were recorded as turned away across a network with 301 beds**. The team’s worksheet also recorded four inbound referrals, which affects how an operator should interpret the apparent spare capacity. I wanted to know how much unmet demand planners might see across a winter, and how much the answer depends on which centres can take referrals.
 
 Our team used integer optimization to allocate staff across seven sites. For this portfolio, I took that staffing plan as an input, rebuilt the demand simulation in Python and tested a change to the overnight transfer rule. The original planning results and my simulation answer different operational questions.
 
@@ -19,7 +19,11 @@ The plan assigns **19 staff to 301 beds**. At one staff member per 20 clients, e
 | Moderate | 231 | 231 | 0 | $24,717 |
 | Extreme | 306 | 297 | 9 | $32,795 |
 
-Even if transfers could fill all four unused beds, at least five people would still lack a bed at this level of demand. The aggregate results do not explain why those four places went unused. The reported operating cost leaves $205 against the $33,000 budget, and the source table gives no cost breakdown to establish whether expansion is affordable. [Scenario results](results/scenario_results.csv) · [Cost assumptions](results/model_assumptions.csv)
+Demand exceeded physical capacity by five people. The team’s Solver sheet records four referrals from Elizabeth, two each to Cecil and Jimmie Simpson. Its receiving-site capacity check adds inbound referrals to admissions. Those four places therefore need to be reconciled with the intake count before an operator treats them as available for a second referral.
+
+### What the $33,000 budget covers
+
+The team committed 19 shifts at $312 each before knowing the weather, for a fixed payroll of **$5,928**. The Solver budget adds payroll to operating costs weighted by the probability of each scenario. At 88% moderate and 12% extreme, the expected nightly spend is **$31,614.36**, leaving **$1,385.64** under budget. On an extreme night, the same plan requires **$38,723** including payroll. A manager working under a hard nightly cap would need $5,723 of contingency on that night. The expected margin alone does not establish whether a permanent expansion is affordable. [Scenario costs](results/scenario_results.csv) · [Budget assumptions](results/model_assumptions.csv) · [Reproduce the calculation](notebooks/warming_centre_end_to_end.ipynb)
 
 ![Physical beds and staffing capacity at each centre](assets/capacity_by_centre.svg)
 

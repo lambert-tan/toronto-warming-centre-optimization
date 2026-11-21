@@ -11,5 +11,5 @@
 <rect x="140" y="395" width="18" height="12" fill="#D1D5DB"/><text x="168" y="406" font-family="Arial" font-size="13" fill="#374151">Demand</text>
 <rect x="270" y="395" width="18" height="12" fill="#111827"/><text x="298" y="406" font-family="Arial" font-size="13" fill="#374151">Admitted</text>
 <rect x="405" y="395" width="18" height="12" fill="#6B7280"/><text x="433" y="406" font-family="Arial" font-size="13" fill="#374151">Turn-aways</text>
-<text x="540" y="406" font-family="Arial" font-size="13" fill="#374151">Extreme cost: $32,795 / $33,000 budget</text>
+<text x="540" y="406" font-family="Arial" font-size="13" fill="#374151">Extreme night incl. payroll: $38,723</text>
 </svg>
