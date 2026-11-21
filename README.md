@@ -1,6 +1,8 @@
 # Toronto Warming Centre Capacity and Staffing
 
-Would an extra staff shift or an extra bed allow Toronto’s warming centres to admit more people on a cold night? This portfolio analysis examines a seven-centre plan from a graduate team project. I rebuilt the demand simulation in Python using the staffing allocation from the original integer optimization.
+On an extreme-weather night, the original Toronto planning scenario admitted 297 of 306 people. With 301 physical beds across seven sites, **four beds remained unused while nine people were turned away**. That gap raises two distinct planning questions: where would more beds help, and could the network use more of the beds it already has?
+
+Our graduate team developed the staffing plan through integer optimization. For this portfolio, I rebuilt the demand simulation in Python and tested that fixed plan over 5,000 nights. [Original scenario results](results/scenario_results.csv)
 
 ## The planning decision
 
@@ -11,7 +13,7 @@ The plan assigns **19 staff to 301 beds**. At one staff member per 20 clients, e
 | Moderate | 231 | 231 | 0 | $24,717 |
 | Extreme | 306 | 297 | 9 | $32,795 |
 
-The extreme scenario leaves nine people unserved. Its reported operating cost is $205 below the stated $33,000 budget. The source table does not itemize payroll and transfers, so the remaining margin cannot be treated as verified funding for expansion. [Scenario results](results/scenario_results.csv) · [Cost assumptions](results/model_assumptions.csv)
+Even if transfers could fill all four unused beds, at least five people would still lack a bed at this level of demand. The aggregate results do not explain why those four places went unused. The reported operating cost leaves $205 against the $33,000 budget, and the source table gives no cost breakdown to establish whether expansion is affordable. [Scenario results](results/scenario_results.csv) · [Cost assumptions](results/model_assumptions.csv)
 
 ![Physical beds and staffing capacity at each centre](assets/capacity_by_centre.svg)
 
@@ -23,7 +25,7 @@ The transfer rule pools spare beds across all sites without a travel or intake l
 
 ## Where additional beds could help
 
-The original expansion analysis identified a ten-bed allocation split between **Elizabeth (five) and Scarborough (five)**. Both sites have staffing headroom for those beds. The published expansion summary identifies equal and proportional alternatives but omits their underlying outcomes. It supports reporting the selected locations, while the size of the improvement cannot be independently reconstructed here. [Expansion summary](results/capacity_expansion_results.csv)
+The original expansion analysis identified a ten-bed allocation split between **Elizabeth (five) and Scarborough (five)**. At the assumed staffing ratio, Elizabeth can cover five additional beds and Scarborough can cover twelve. Both proposed additions therefore fit the existing shifts. The saved results do not give admissions by site for the alternative allocations. Before funding the expansion, I would ask for those comparisons and confirm which sites can accept transfers on each shift. [Expansion summary](results/capacity_expansion_results.csv)
 
 ## Reproduce the stress test
 
